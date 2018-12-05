@@ -3,10 +3,13 @@ var sql = require('../connection');
 
 let requestComp = function(request){
     // campos editables de un request
-    this.description = request.description;
-    this.amount = request.amount;
-    this.type = 'presupuesto';
-    this.createdBy= request.createdBy;
+    this.area = request.area;
+    this.entity = request.entity;
+    this.program = request.program;
+    this.subprogram = request.subprogram;
+    this.activity = request.activity;
+    this.source = request.source;
+    this.expenses = request.expenses;
 }
 
 requestComp.getAllRequests = function(callback){

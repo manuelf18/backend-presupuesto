@@ -3,10 +3,9 @@ var sql = require('../connection');
 
 let requestLog = function(request){
     // campos editables de un request
-    this.description = request.description;
     this.amount = request.amount;
-    this.type = 'presupuesto';
-    this.createdBy= request.createdBy;
+    this.changeBy = request.changeBy;
+    this.createdAt= request.createdAt;
 }
 
 requestLog.getAllRequests = function(callback){
