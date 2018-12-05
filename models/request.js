@@ -19,7 +19,7 @@ Request.getAllRequests = function(callback){
 }
 
 Request.getRequestById = function(id, callback){
-    sql.query("Select task from request where id = ? ", id, function (err, res) {             
+    sql.query("Select * from request where id = ? ", id, function (err, res) {             
         if(err) 
             callback(err, null);
         callback(null, res);
