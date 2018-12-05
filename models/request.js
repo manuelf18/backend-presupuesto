@@ -7,6 +7,7 @@ let Request = function(request){
     this.amount = request.amount;
     this.type = 'presupuesto';
     this.createdBy= request.createdBy;
+    this.status = request.status;
 }
 
 Request.getAllRequests = function(callback){
@@ -38,7 +39,7 @@ Request.insertOne = function(new_request, callback){
 }
 
 Request.updateOne = function(new_request, id, callback){
-    sql.query("UPDATE request SET description = ?, amount = ?, type = ?, createdBy = ? WHERE id = ?", [new_request.description, new_request.amount, new_request.type, new_request.createdBy, id], function(err, request){
+    sql.query("UPDATE request SET description = ?, amount = ?, type = ?, createdBy = ?, status = ? WHERE id = ?", [new_request.description, new_request.amount, new_request.type, new_request.createdBy, new_request.status, id], function(err, request){
         if(err){
             callback(err, null);}
         Request.getRequestById(id, function(err, res){
