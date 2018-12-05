@@ -4,7 +4,9 @@
   "description": "Backend para el proyecto de Calidad de Software",
   "main": "app.js",
   "dependencies": {
-    "express": "^4.16.4"
+    "express": "^4.16.4",
+    "mysql": "^2.16.0",
+    "nodemon": "^1.18.7"
   },
   "devDependencies": {},
   "scripts": {

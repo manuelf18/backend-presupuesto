@@ -1,9 +1,17 @@
 let express = require('express');
 let router = express.Router();
+let Request = require('../models/request');
 
 // Begin declaration of routes
-router.get('/', function(req, res){
-    res.send(JSON.stringify('hola')); // in an API answers should be JSONs
+router.get('/requests', function(req, res){
+    Request.getAllRequests(function(err, requests){
+        if(err)
+            console.log(err);
+        else{
+            res.setHeader('Content-Type', 'application/json');
+            res.send(JSON.stringify(requests));
+        }
+    })
 });
 
 
