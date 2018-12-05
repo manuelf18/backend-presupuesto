@@ -12,14 +12,18 @@ let Request = function(request){
 
 Request.getAllRequests = function(callback){
     sql.query("Select * from request", function(err, res){
-        if(err) {
-            console.log("error: ", err);
-            callback(null, err);
-        }
-        else{
-            callback(null, res);
-        }
+        if(err) 
+            callback(err, null);
+        callback(null, res);
     });
+}
+
+Request.getRequestById = function(id, callback){
+    sql.query("Select task from request where id = ? ", id, function (err, res) {             
+        if(err) 
+            callback(err, null);
+        callback(null, res);
+    });   
 }
 
 module.exports = Request;
