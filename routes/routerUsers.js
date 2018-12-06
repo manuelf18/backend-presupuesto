@@ -8,7 +8,6 @@ router.post('/login', function(req, res, next){
     password = req.body.password;
     User.login(username, password, function(err, result){
         if(err){
-            console.log(err);
             next(err);}
         else{
             res.setHeader('Content-Type', 'application/json');
@@ -17,4 +16,15 @@ router.post('/login', function(req, res, next){
     });
 });
 
+router.get('/user/:id', function(req, res, next){
+    id = req.params.id;
+    User.findUserById(id, function(err, result){
+        if(err){
+            next(err);}
+        else{
+            res.setHeader('Content-Type', 'application/json');
+            res.send(JSON.stringify(result));
+        }
+    });
+});
 module.exports = router;

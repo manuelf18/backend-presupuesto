@@ -3,6 +3,7 @@ var sql = require('../connection');
 
 let requestComp = function(request){
     // campos editables de un request
+    this.requestID = request.requestID;
     this.area = request.area;
     this.entity = request.entity;
     this.program = request.program;
@@ -41,7 +42,7 @@ requestComp.insertOne = function(new_request, callback){
 }
 
 requestComp.updateOne = function(new_request, id, callback){
-    sql.query("UPDATE request_comp SET area = ?, entity = ?, program = ?, subprogram = ?, activity = ?, source = ?, expenses = ? WHERE id = ?", [new_request.area, new_request.entity, new_request.program, new_request.subprogram, new_request.activity, new_request.source, new_request.expenses, id], function(err, request){
+    sql.query("UPDATE request_comp SET requestID=?, area = ?, entity = ?, program = ?, subprogram = ?, activity = ?, source = ?, expenses = ? WHERE id = ?", [new_request.requestID, new_request.area, new_request.entity, new_request.program, new_request.subprogram, new_request.activity, new_request.source, new_request.expenses, id], function(err, request){
         if(err){
             callback(err, null);}
         requestComp.getRequestById(id, function(err, res){

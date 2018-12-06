@@ -27,7 +27,7 @@ router.get('/reqcomp/:id', function(req, res, next){
 });
 
 router.post('/reqcomp', function(req, res, next){
-    new_request = new Request(req.body);
+    new_request = new requestComp(req.body);
     requestComp.insertOne(new_request, function(err, request){
         if(err)
             next(err);
@@ -40,7 +40,7 @@ router.post('/reqcomp', function(req, res, next){
 
 router.put('/reqcomp/:id', function(req, res, next){
     id = req.params.id;
-    new_request = new Request(req.body);
+    new_request = new requestComp(req.body);
     requestComp.updateOne(new_request, id, function(err, request){
         if(err)
             next(err);

@@ -17,4 +17,12 @@ User.login = function(username, password, callback){
     });
 }
 
+User.findUserById = function(id, callback){
+    sql.query("Select * from user where id = ? ", [id], function(err, res){             
+        if(err) 
+            callback(err, null);
+        callback(null, res);
+    });   
+}
+
 module.exports = User;

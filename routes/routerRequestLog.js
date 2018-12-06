@@ -27,7 +27,7 @@ router.get('/reqlog/:id', function(req, res, next){
 });
 
 router.post('/reqlog', function(req, res, next){
-    new_request = new Request(req.body);
+    new_request = new requestLog(req.body);
     requestLog.insertOne(new_request, function(err, request){
         if(err)
             next(err);
@@ -40,7 +40,7 @@ router.post('/reqlog', function(req, res, next){
 
 router.put('/reqlog/:id', function(req, res, next){
     id = req.params.id;
-    new_request = new Request(req.body);
+    new_request = new requestLog(req.body);
     requestLog.updateOne(new_request, id, function(err, request){
         if(err)
             next(err);
